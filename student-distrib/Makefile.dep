@@ -1,0 +1,21 @@
+boot.o: boot.S multiboot.h x86_desc.h types.h
+idt_handler.o: idt_handler.S
+system_calls_asm.o: system_calls_asm.S
+x86_desc.o: x86_desc.S x86_desc.h types.h
+file_sys.o: file_sys.c file_sys.h x86_desc.h types.h keyboard.h lib.h \
+  i8259.h
+i8259.o: i8259.c i8259.h types.h lib.h
+idt.o: idt.c idt.h x86_desc.h types.h lib.h
+idt_handlers.o: idt_handlers.c multiboot.h types.h x86_desc.h lib.h \
+  i8259.h debug.h tests.h keyboard.h rtc.h system_calls.h file_sys.h
+kernel.o: kernel.c multiboot.h types.h x86_desc.h lib.h i8259.h debug.h \
+  tests.h keyboard.h rtc.h page.h idt.h system_calls.h file_sys.h
+keyboard.o: keyboard.c keyboard.h x86_desc.h types.h lib.h i8259.h \
+  system_calls.h file_sys.h
+lib.o: lib.c lib.h types.h keyboard.h x86_desc.h i8259.h
+page.o: page.c page.h x86_desc.h types.h
+rtc.o: rtc.c rtc.h x86_desc.h types.h lib.h i8259.h tests.h
+system_calls.o: system_calls.c system_calls.h x86_desc.h types.h \
+  file_sys.h keyboard.h lib.h i8259.h page.h rtc.h tests.h
+tests.o: tests.c tests.h x86_desc.h types.h lib.h page.h file_sys.h \
+  keyboard.h i8259.h rtc.h
